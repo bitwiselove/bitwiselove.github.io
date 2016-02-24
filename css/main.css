@@ -383,6 +383,19 @@ img {
   img:hover {
     border-color: #dedede; }
 
+footer {
+  margin-bottom: 3em; }
+
+hr {
+  margin: 3.25em auto;
+  height: 1.7em;
+  border: 0;
+  text-align: center; }
+  hr:before {
+    content: '***';
+    color: #c5c5c5;
+    letter-spacing: .2em; }
+
 .brand a {
   color: #02010a;
   text-decoration: none; }
