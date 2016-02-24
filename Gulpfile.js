@@ -11,17 +11,17 @@ gulp.task('scss', () => {
   return gulp.src('./scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('main.css'))
-    .pipe(gulp.dest('./css'));
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('build', () => {
-  gulp.src('css/**/*.css')
+  gulp.src('dist/**/*.css')
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false,
     }))
     .pipe(cssmin())
-    .pipe(rename({suffix: '.min'}))
+    .pipe(concat('main.min.css'))
     .pipe(gulp.dest('dist'));
 });
 
