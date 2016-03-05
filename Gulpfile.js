@@ -9,13 +9,13 @@ var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('scss', () => {
   return gulp.src('./scss/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(concat('main.css'))
     .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('build', () => {
-  gulp.src('dist/**/*.css')
+  gulp.src('./scss/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(concat('main.css'))
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false,
@@ -26,5 +26,5 @@ gulp.task('build', () => {
 });
 
 gulp.task('default', () => {
-  gulp.watch('./scss/**/*.scss', ['scss']);
+  gulp.watch('./scss/**/*.scss', ['build']);
 });
