@@ -1,0 +1,101 @@
+a {
+  color: #48a9a6;
+
+  &:focus, &:hover {
+    color: mix(white, #48a9a6, 20%);
+  }
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: .1px;
+  line-height: 1.2;
+}
+
+h2 {
+  margin-top: 2em;
+  font-size: 1.2em;
+}
+
+h3 small {
+  display: block;
+  margin-top: .5em;
+  color: #48a9a6;
+  font-family: 'Fira Mono', 'Courier New', monospace;
+  font-weight: normal;
+}
+
+del {
+  color: #c5c5c5;
+  font-style: italic;
+  font-size: .9em;
+}
+
+p {
+  line-height: 1.6;
+}
+
+hr {
+  margin: 3.25em auto;
+  height: 1.7em;
+  border: 0;
+  text-align: center;
+
+  &:before {
+    content: '***';
+    color: #c5c5c5;
+    letter-spacing: .2em;
+  }
+}
+
+.brand {
+  a {
+    color: #02010a;
+    text-decoration: none;
+  }
+}
+
+.tagline {
+  color: #c5c5c5;
+  font-size: .4em;
+  font-family: 'Fira Mono', 'Courier New', monospace;
+  font-weight: 400;
+
+  &:before {
+    content: '<< ';
+  }
+}
+
+.lead {
+  font-size: 1.15em;
+}
+
+.tags {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  &:before {
+    content: 'Technologies used:';
+  }
+
+  > li {
+    display: inline-block;
+    margin-bottom: .5em;
+    font-size: .8em;
+
+    &:not(:last-child) {
+      &:after {
+        content: ',';
+        font-size: 1rem;
+      }
+    }
+
+    &:last-child {
+      &:after {
+        content: '.';
+        font-size: 1rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+section {
+  margin-bottom: 3.25em;
+}
+
+img {
+  display: block;
+  margin-bottom: 1.5em;
+  max-width: 100%;
+  border: 2px solid #cdcdcd;
+
+  &:hover {
+    border-color: #dedede;
+  }
+}
+
+footer {
+  margin-bottom: 3em;
+}
