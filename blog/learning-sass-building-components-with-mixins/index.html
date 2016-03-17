@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Forkbombs - Learning Sass: Building Components with Mixins</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.3/normalize.css">
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+  </head>
+  <body>
+    <div class="container">
+      <a href="http://forkbombs.com/" class="brand">Forkbombs.</a>
+      <h1>Learning Sass: Building Components with Mixins</h1>
+      <p class="metadata">By <a href="http://forkbombs.com/">Brandon Newton</a>, on Mar 16th, 2016</p>
+
+      <h2>Mixin Overview</h2>
+
+      <p>Mixins are essentially functions that return a block of CSS that can be
+      used wherever you want to include it. The "hello world" of mixins is
+      browser prefixing border-radius <small>(which is pointless)</small> like so:</p>
+
+<pre><code class="language-scss">@mixin border-radius($radius) {
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+* { include border-radius(100%); }
+</code></pre>
+
+      <p>Mixins are defined using the <code>@mixin</code> keyword followed by an
+        identifier and optionally some parameters. An example of a common mixin:</p>
+
+<pre><code class="language-scss">@mixin clearfix {
+  &amp;:after {
+    display: table;
+    clear: both;
+    content: '';
+  }
+}
+
+.container { @include clearfix; }
+</code></pre>
+
+        <p>Which compiles to</p>
+
+<pre><code class="language-scss">.container:after {
+  display: table;
+  clear: both;
+  content: '';
+}
+</code></pre>
+
+      <p>In reality mixins are far more powerful and can be used to compose
+        entire components.</p>
+
+      <h2>Building a Button</h2>
+
+      <p>I will be building a button component based on <a
+          href="https://dribbble.com/shots/2479646-Buttons">this Dribbble shot
+          by Jamie Fang</a>. Let's examine the states of the default button:
+      </p>
+      <img src="images/default_button_states.png" alt="">
+      <p>
+        For a simple component these buttons have a lot going on. The normal
+        state has a regular and inset box shadow, text shadow, and linear
+        gradient background. Creating a class for this button is simple:
+      </p>
+
+      <pre><code class="language-scss">.btn {
+  display: inline-block;
+  padding: 1.125em 2.3125em;
+  border-radius: 8px;
+  border: 2px solid #ccd1d9;
+  background-color: #ecf0f5;
+  color: #3d444f;
+  box-shadow: 0 2px 0 #fbfcfd,
+              inset 0 2px 0 #fbfcfd;
+  text-shadow: 0 1px 1px #fbfcfd;
+  outline: none;
+
+  &amp;:hover, &amp;:focus { box-shadow: 0 2px 0 #fff; }
+  &amp;:active {
+    box-shadow: 0 2px 0 #fbfcfd,
+                inset 0 2px 10px #ccd1d9;
+  }
+}</code></pre>
+
+      <h2>Creating a Primary Modifier</h2>
+      <p>
+        This works. But if we want to guide a user in the right direction we're
+        going to need some action indicators for these buttons. Have a look at the
+        primary button states:
+      </p>
+      <img src="images/primary_button_states.png" alt="">
+      <p>
+        The main differences between the default and primary buttons are:
+      </p>
+      <ul>
+        <li>border color</li>
+        <li>background gradient</li>
+        <li>box shadow color</li>
+        <li>text color</li>
+        <li>text shadow color and direction</li>
+      </ul>
+      <p>We can easily create a modifier class that overwrites those properties:</p>
+
+      <pre><code class="language-scss">.btn {
+  // ...
+
+  &amp;--primary {
+    border-color: #217ef2;
+    background-color: #3b90fa;
+    background: linear-gradient(to bottom, #58a2fe, #2e87f7);
+    color: #fff;
+    box-shadow: 0 2px 4px #dee0e5, inset 0 2px 0 #58a2fe;
+    text-shadow: 0 -1px 1px #3080e2;
+    // &amp;:hover, &amp;:focus { etc... }
+  }
+}</code></pre>
+
+      <p>
+        We have a button component with a default and primary state. Our designer
+        wants us to add two more states: success, and danger. However, we're currently
+        hovering near 50 lines of code for a button with two states and we
+        don't know how many more will be added in the future. This is a great
+        time to refactor our current solution.
+      </p>
+
+      <h2>Refactoring and Extracting Mixins</h2>
+
+      <p>
+        Looking at the primary state is a good start. We can determine all the
+        values that get overwritten and create a mixin to handle that for us.
+      </p>
+
+      <p>
+        Mixins can accept keyword arguments, my advice is to always use
+        them if your mixin accepts more than one argument. It only adds
+        readability to a large codebase. Without keyword arguments you would
+        come accross something like this in the source:<br>
+        <code>buildButtonState(dashed, white, 5em, green, ...)</code><br>
+        This is a pain to reason about and only leads to confusion.
+        <strong>Always use keyword arguments for non-trivial mixins</strong>.
+      </p>
+
+<pre><code class="language-scss">@mixin buildButtonState(
+  $borderColor: firebrick,
+  $gradientStart: navajowhite,
+  $gradientEnd: seagreen,
+  $color: ivory,
+  $boxShadow: #dee1e5,
+  $insetBoxShadow: salmon,
+  $textShadow: rebeccapurple
+) {
+  border-color: $borderColor;
+  background-color: $gradientEnd;
+  background: linear-gradient(to bottom, $gradientStart, $gradientEnd);
+  color: $color;
+  box-shadow: 0 2px 4px $boxShadow, inset 0 2px 0 $insetBoxShadow;
+  text-shadow: 0 -1px 1px $textShadow;
+
+  &amp;:hover, &amp;:focus {
+    background-color: darken($gradientEnd, 4%);
+    background: linear-gradient(to bottom,
+      darken($gradientStart, 4%),
+      darken($gradientEnd, 4%)
+    );
+    box-shadow: 0 2px 4px $boxShadow,
+                inset 0 2px 0 mix($insetBoxShadow, $gradientStart, 2%);
+  }
+
+  &amp;:active {
+    background: mix($gradientEnd, $gradientStart);
+    box-shadow: inset 0 2px 10px $borderColor;
+  }
+}</code></pre>
+
+      <p>Now replace the <code>&amp;--primary</code> class to use the new
+        mixin.</p>
+
+<pre><code class="language-scss">.btn {
+  // ...
+
+  &amp;--primary {
+    @include buildButtonState;
+  }
+}
+</code></pre>
+
+        <div style="text-align: center">
+          <button class="btn holy-mother-of-god">Don't forget to pass in arguments...</button>
+        </div>
+
+<pre><code class="language-scss">.btn {
+  // ...
+
+  &amp;--primary {
+    @include buildButtonState(
+      $borderColor: #217ef2,
+      $gradientStart: #58a2fe,
+      $gradientEnd: #2e87f7,
+      $insetBoxShadow: #58a2fe,
+      $textShadow: #3080e2
+    );
+  }
+
+  &amp;--success {
+    @include buildButtonState(
+      $borderColor: #279a5b,
+      $gradientStart: #30cb76,
+      $gradientEnd: #2da965,
+      $insetBoxShadow: #40d081,
+      $textShadow: #2bb065
+    );
+  }
+
+  &amp;--danger {
+    @include buildButtonState(
+      $borderColor: #e1342b,
+      $gradientStart: #f25850,
+      $gradientEnd: #e54138,
+      $insetBoxShadow: #f3665f,
+      $textShadow: #d64b42
+    );
+  }
+
+  &amp;--small {
+    padding: .5625em 1.5625em;
+  }
+}
+</code></pre>
+
+        <div style="text-align: center; margin-bottom: 3em;">
+          <button class="btn btn--small">Default</button>
+          <button class="btn btn--small btn--new-primary">Primary</button>
+          <button class="btn btn--small btn--success">Success</button>
+          <button class="btn btn--small btn--danger">Danger</button>
+        </div>
+
+        <h2>Why is This Useful?</h2>
+        <p>
+          Creating components this way allows for easier extension, predictable results,
+          and a more managable codebase. If we were to not use mixins in this
+          example the resulting file would be over 200 lines of code and a mess to
+          look at and change. If we wanted to add another button style it would be
+          trivial to do so. Mixins are really powerful and incredibly helpful to
+          remove duplication in your codebase.
+        </p>
+
+        <h2>Dribbble UI Challenge</h2>
+        <p>The best way to learn is by doing. <a
+            href="https://dribbble.com/search?q=ui&s=latest">Search Dribbble</a>
+        for a user interface that you like and try to create it using HTML &amp;
+        Sass. Refactor your code to make use of mixins and post the result here.</p>
+
+        <p>The source code for this blog post is available at <a
+            href="https://github.com/bitwiselove/DRYButtons">Github</a>. Please
+        leave a comment if you have any questions or to show off what you've
+        made with mixins!</p>
+
+        <div class="disqus" id="disqus_thread"></div>
+      </div>
+      <script>
+        var disqus_config = function () {
+          this.page.url =
+            'http://forkbombs.com/blog/learning-sass-building-components-with-mixins/';
+          this.page.identifier = 'learning-sass-mixins';
+        };
+        (function() {
+          var d = document, s = d.createElement('script');
+
+          s.src = 'http://forkbombs.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a
+          href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+          powered by Disqus.</a></noscript>
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-74302105-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+      <script src="prism.js"></script>
+    </body>
+  </html>
