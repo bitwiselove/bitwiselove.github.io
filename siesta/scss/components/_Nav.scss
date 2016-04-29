@@ -1,0 +1,25 @@
+.c-Nav {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  > li {
+    margin-right: 1.625em;
+    font-size: .875em;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  a {
+    color: #939393;
+    text-decoration: none;
+    transition: color .25s;
+
+    &:hover,
+    &:focus,
+    &.is-active {
+      color: #4b4b4b;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+.c-AltSection {
+  padding: 3.125em 0;
+  padding-top: 5em;
+  background-color: #d3ebfd;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  min-height: 700px;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: .5em;
+    font-size: 2.25em;
+    letter-spacing: 2px;
+  }
+
+  p {
+    margin-top: 0;
+    font-size: 1.2em;
+    max-width: 34em;
+    padding-left: 1em;
+  }
+}
+
+.c-Section {
+  padding: 3.125em 0;
+  padding-top: 5em;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50% 75px;
+  text-align: center;
+  min-height: 600px;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: .5em;
+    font-size: 2.25em;
+    letter-spacing: 2px;
+  }
+
+  p {
+    margin-top: 0;
+    font-size: 1.2em;
+    max-width: 34em;
+  }
+
+  .o-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 45em;
+
+    &--col {
+      flex-direction: column;
+    }
+  }
+
+  @include mobile {
+    .o-container {
+      display: block;
+    }
+  }
+}

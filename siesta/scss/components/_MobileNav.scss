@@ -1,0 +1,46 @@
+.c-MobileNav {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  box-shadow: 0 0 10px rgba(0,0,0,.14);
+  transition: visibility 0s linear .25s, opacity .25s;
+
+  &.is-visible {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: .25s;
+  }
+
+  &__nav {
+    margin: 0;
+    padding: 0;
+    background: white;
+    list-style: none;
+
+    > li {
+      font-weight: bold;
+      letter-spacing: 1px;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #e4e4ee;
+      }
+    }
+
+    a {
+      display: block;
+      padding: 1em;
+      color: #939393;
+      text-decoration: none;
+      transition: color .25s;
+
+      &:hover,
+      &:focus,
+      &.is-active {
+        color: #111b9f;
+      }
+    }
+  }
+}

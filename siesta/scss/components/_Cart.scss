@@ -1,0 +1,61 @@
+.c-Cart {
+  position: absolute;
+  top: calc(60px + 1.5em);
+  right: 1em;
+  padding: 1em;
+  min-width: 450px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,.14);
+  background-color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear .25s, opacity .25s;
+
+  @include mobile {
+    top: 60px;
+    right: 0;
+    min-width: 0;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  &.is-visible {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+  }
+
+  &__header {
+    display: flex;
+    padding-bottom: .5em;
+    border-bottom: 1px solid #e4e4ee;
+  }
+
+  &__heading {
+    margin: 0;
+    color: #4b4b4b;
+    font-size: 1.25em;
+    letter-spacing: 2px;
+  }
+
+  &__close {
+    margin-left: auto;
+    color: #111b9f;
+    line-height: 1rem;
+    font-size: 2em;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  &__row {
+    padding: 1em 0;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #e4e4ee;
+    }
+  }
+}

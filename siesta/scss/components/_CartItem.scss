@@ -1,0 +1,55 @@
+.c-CartItem {
+  display: flex;
+  color: #7e7f86;
+
+  &:after {
+    display: table;
+    content: '';
+    clear: both;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  &__thumbnail {
+    width: 70px;
+  }
+
+  &__body {
+    width: 100%;
+    padding-left: 1em;
+  }
+
+  &__header {
+    display: flex;
+    margin-bottom: .3em;
+  }
+
+  &__title {
+    margin: 0;
+    color: #111b9f;
+    font-weight: 600;
+  }
+
+  &__remove {
+    margin-left: auto;
+    color: #9d9da7;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  &__description {
+    margin: 0;
+    margin-bottom: .25em;
+  }
+
+  &__footer {
+    display: flex;
+  }
+
+  &__price {
+    margin-left: auto;
+  }
+}

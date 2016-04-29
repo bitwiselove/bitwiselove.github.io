@@ -1,0 +1,53 @@
+.c-Menubar {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,.14);
+
+  .o-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 60px;
+  }
+
+  &__hamburger {
+    display: none;
+  }
+
+  &__brand {
+    order: 0;
+    margin-right: 3.25em;
+  }
+
+  &__nav {
+    order: 1;
+  }
+
+  &__cart {
+    order: 2;
+    margin-left: auto;
+  }
+
+  @include mobile {
+    .o-container {
+      justify-content: space-between;
+    }
+    &__hamburger {
+      display: block;
+      margin-right: auto;
+    }
+    &__brand {
+      order: 1;
+      margin: 0;
+    }
+    &__nav {
+      display: none;
+    }
+    &__cart {
+      order: 2;
+    }
+  }
+}
