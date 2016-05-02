@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Siesta</title>
     <link href="dist/css/compiled.css" rel="stylesheet">
+    <link rel="icon" href="favicon.png">
   </head>
   <body>
     <header class="c-Menubar">
@@ -119,43 +120,54 @@
     </header>
     <div class="c-Hero" style="background-image: url(assets/hero.jpg)">
       <div class="c-Hero__container">
-        <p class="c-Hero__title animated fadeInUp delay-1">Pleased to seat you.</p>
-        <p class="c-Hero__subtitle animated fadeIn delay-2">
-        The perfect go anywhere lounge chair.<br>
-        Simply run and fill. No pump required.
+        <p class="c-Hero__title wow animated fadeInDown">Siesta</p>
+        <p class="c-Hero__subtitle wow animated fadeIn" data-wow-delay=".5s">
+          Pleased to seat you.
         </p>
       </div>
     </div>
-    <section class="c-Section" style="background-image: url(assets/nap.jpg)">
-      <div class="o-container o-container--col">
-        <h2 class="animated fadeIn delay-2">There's no such thing as a quick nap.</h2>
-        <p class="animated fadeIn delay-3">The Siesta lasts up to 4 hours on a single fill. When it's time to
-        kickback and relax, take as long as you need. The Siesta lasts up to
-        4 hours on a single fill.</p>
-        <a href="#" class="c-Button --primary mt1 animated fadeIn delay-3">MORE INFO</a>
-      </div>
-    </section>
-    <section class="c-AltSection" style="background-image: url(assets/features.jpg)">
-      <div class="o-container">
-        <h2 class="animated fadeIn delay-2 pt2">The most relaxing features.</h2>
-        <p class="animated fadeIn delay-3">
-        Supports up to 300kg.<br>
-        Durable material.<br>
-        Amazing times.<br>
-        <a href="#">Learn more</a>.
-        </p>
-      </div>
-    </section>
-    <section class="c-AltSection" style="background-image: url(assets/sitting.jpg)">
-      <div class="o-container">
-        <h2 class="animated fadeIn delay-2">For all to enjoy.</h2>
-        <p class="animated fadeIn delay-3">
-        Sleep on it, lounge on it, dream on it &mdash; if you don't love your
-        Siesta, we'll take it back and give you a full refund.</p>
-        <div style="display: flex" class="mt1 pl1">
-        <a href="#" class="c-Button --primary animated fadeIn delay-3">DETAILS</a>
+    <div class="o-container --small pb4" style="text-align: center">
+      <p class="skinny-text lead wow animated fadeIn" data-wow-delay=".5s">Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit. Cras posuere enim libero, id sollicitudin mauris pharetra
+      in. Etiam vel neque vitae purus eleifend finibus a at risus. Donec tempor
+      vestibulum ullamcorper.
+      </p>
+    </div>
+    <section class="c-Section" style="background-image: url(assets/light.jpg)">
+      <div class="o-container --md">
+        <div>
+          <h2 class="skinny-text wow animated fadeIn">Light as air</h2>
+          <p class="skinny-text wow animated fadeIn" data-wow-delay=".5s">Less than 3 lbs. Packs up
+          lighter<br>
+          than a bag of chips.</p>
         </div>
       </div>
+    </section>
+    <section class="c-AltSection pt0" style="background-image: url(assets/running.jpg)">
+      <div class="o-container --md text-center">
+        <h2 class="skinny-text wow animated fadeIn pt2">No pump required</h2>
+        <p class="skinny-text wow animated fadeIn" data-wow-delay=".5s">Simply run to capture air.</p>
+      </div>
+    </section>
+    <section class="c-Section" style="background-image: url(assets/seal.jpg)">
+      <div class="o-container --md">
+        <div>
+          <h2 class="large-text mb.5 mt2 bold wow animated fadeIn">That's it.</h2>
+          <p class="skinny-text wow animated fadeIn" data-wow-delay=".5s">Seal and enjoy.</p>
+        </div>
+      </div>
+    </section>
+    <div class="o-container text-center">
+      <h2 class="section-heading skinny-text wow animated fadeIn ">Cozy anywhere</h2>
+      <p class="section-text mxauto skinny-text max-width1 text-center wow animated fadeIn" data-wow-delay=".5s">
+      Sleep on it, lounge on it, dream on it &mdash; if you don't love your
+      Siesta, we'll take it back and give you a full refund.</p>
+      <div style="display: flex; justify-content: center;" class="text-center mt1 pl1">
+        <a href="#" class="c-Button --primary wow animated fadeIn"
+          data-wow-delay="1s">DETAILS</a>
+      </div>
+    </div>
+    <section class="c-AltSection pb0" style="background-image: url(assets/sitting.jpg)">
     </section>
     <footer class="c-Footer">
       <div class="c-Footer__body o-container">
@@ -202,7 +214,7 @@
       </div>
     </footer>
     <script src="assets/jquery.min.js"></script>
-    <script src="assets/parallax.min.js"></script>
+    <script src="assets/wow.js"></script>
     <script src="assets/main.js"></script>
   </body>
 </html>

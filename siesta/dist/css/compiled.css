@@ -3659,6 +3659,10 @@ a {
   padding-right: 1em; }
   .o-container.--wide {
     max-width: 80rem; }
+  .o-container.--small {
+    max-width: 45rem; }
+  .o-container.--md {
+    max-width: 55rem; }
 
 .c-Menubar {
   position: fixed;
@@ -3700,7 +3704,7 @@ a {
   margin: 0;
   font-size: 2em; }
   .c-Brand a {
-    color: #111b9f;
+    color: #00A99C;
     text-decoration: none; }
 
 .c-Nav {
@@ -3786,7 +3790,7 @@ a {
     letter-spacing: 2px; }
   .c-Cart__close {
     margin-left: auto;
-    color: #111b9f;
+    color: #00A99C;
     line-height: 1rem;
     font-size: 2em;
     font-weight: 700;
@@ -3802,36 +3806,31 @@ a {
   position: relative;
   margin-top: 60px;
   background-repeat: no-repeat;
-  background-size: cover;
-  color: #fff;
+  background-size: contain;
+  background-position: bottom;
   height: 75vh;
   text-align: center; }
   .c-Hero__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding-top: 5em;
     min-height: 580px; }
   .c-Hero__title {
     margin: 0;
+    color: #00A99C;
     font-size: 4.5em;
     font-weight: 800;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
+    line-height: .8; }
   .c-Hero__subtitle {
     margin: 0;
-    margin-top: .25em;
-    font-size: 1.5em;
-    font-weight: 700;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
+    font-size: 3em;
+    font-weight: 300; }
 
 .c-AltSection {
-  padding: 3.125em 0;
+  padding: 4.125em 0;
   padding-top: 5em;
-  background-color: #d3ebfd;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: top;
-  min-height: 700px; }
+  height: 75vh; }
   .c-AltSection h2 {
     margin-top: 0;
     margin-bottom: .5em;
@@ -3840,18 +3839,16 @@ a {
   .c-AltSection p {
     margin-top: 0;
     font-size: 1.2em;
-    max-width: 34em;
     padding-left: 1em; }
 
 .c-Section {
-  padding: 3.125em 0;
+  padding: 4.125em 0;
   padding-top: 5em;
   background-color: #fff;
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: 50% 75px;
-  text-align: center;
-  min-height: 600px; }
+  background-position: center;
+  height: 75vh; }
   .c-Section h2 {
     margin-top: 0;
     margin-bottom: .5em;
@@ -3861,13 +3858,6 @@ a {
     margin-top: 0;
     font-size: 1.2em;
     max-width: 34em; }
-  .c-Section .o-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 45em; }
-    .c-Section .o-container--col {
-      flex-direction: column; }
   @media (max-width: 725px) {
     .c-Section .o-container {
       display: block; } }
@@ -3902,7 +3892,7 @@ a {
       text-decoration: none;
       transition: color .25s; }
       .c-MobileNav__nav a:hover, .c-MobileNav__nav a:focus, .c-MobileNav__nav a.is-active {
-        color: #111b9f; }
+        color: #00A99C; }
 
 .c-Learn {
   position: relative;
@@ -4019,7 +4009,7 @@ a {
     margin-bottom: .3em; }
   .c-CartItem__title {
     margin: 0;
-    color: #111b9f;
+    color: #00A99C;
     font-weight: 600; }
   .c-CartItem__remove {
     margin-left: auto;
@@ -4089,11 +4079,20 @@ a {
 .mt1 {
   margin-top: 1em; }
 
+.mt2 {
+  margin-top: 2em !important; }
+
+.mb\.5 {
+  margin-bottom: .5rem !important; }
+
 .pt2 {
   padding-top: 2em; }
 
 .pl1 {
   padding-left: 1em; }
+
+.pb4 {
+  padding-bottom: 4em; }
 
 .delay-1 {
   animation-delay: .5s; }
@@ -4103,3 +4102,42 @@ a {
 
 .delay-3 {
   animation-delay: 1.25s; }
+
+.skinny-text {
+  font-weight: 300; }
+
+.text-center {
+  text-align: center; }
+
+.lead {
+  font-size: 1.5em; }
+
+.large-text {
+  font-size: 3rem !important; }
+
+.bold {
+  font-weight: 800; }
+
+.mxauto {
+  margin-left: auto;
+  margin-right: auto; }
+
+.max-width1 {
+  max-width: 45rem; }
+
+.section-text {
+  margin-top: 0;
+  font-size: 1.2em;
+  padding-left: 1em; }
+
+.section-heading {
+  margin-top: 0;
+  margin-bottom: .5em;
+  font-size: 2.25em;
+  letter-spacing: 2px; }
+
+.pb0 {
+  padding-bottom: 0 !important; }
+
+.pt0 {
+  padding-top: 0 !important; }
