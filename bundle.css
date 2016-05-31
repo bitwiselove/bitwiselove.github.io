@@ -1,0 +1,38 @@
+body {
+  background: #1e1e1e;
+  color: #eee;
+  font-family: "Comic Sans MS", monospace;
+}
+
+h1,
+p {
+  max-width: 35rem;
+}
+
+.📬 {
+  display: inline-block;
+  padding: 2em;
+  background-color: #1DFF3E;
+  color: #2900BD;
+  font-family: monospace;
+}
+.📬:hover {
+  background-color: #0C9621;
+  color: #1220FF;
+}
+
+.🖼 {
+  display: block;
+  box-shadow: 50px 50px 50px rgba(0, 0, 0, .15);
+}
+
+.🐜 {
+  color: #464646;
+  font-size: 1rem;
+}
+
+.🔨 {
+  display: block;
+  padding: 5px;
+  background-color: #fff;
+}
